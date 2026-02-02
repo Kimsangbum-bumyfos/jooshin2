@@ -12,9 +12,11 @@ add_action('wp_enqueue_scripts', function () {
   );
   wp_enqueue_style(
     'child-style',
-    get_stylesheet_uri()
+    get_stylesheet_uri(),
+    ['parent-style'],
+    time()
   );
-});
+}, 20);
 
 /* 로그인 CSS */
 add_action('login_enqueue_scripts', function () {
