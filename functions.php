@@ -26,6 +26,8 @@ add_action('login_enqueue_scripts', function () {
   );
 });
 
+
+
 /* 로그인 레이아웃 DOM 재구성 */
 add_action('login_footer', function () {
   ?>
@@ -95,20 +97,94 @@ add_action('wp_dashboard_setup', function () {
   remove_meta_box('dashboard_primary', 'dashboard', 'side');
 });
 
+// ===== 관리자 메뉴 순서 변경 =====
+add_filter('custom_menu_order', '__return_true');
+add_filter('menu_order', function($menu_order) {
+    return [
+        'edit.php?post_type=notice',    // 공지사항
+        'edit.php?post_type=js_product', // 제품소개
+        'edit.php?post_type=service',   // 시험 및 용역
+        'edit.php?post_type=customer_inquiry',   // 시험 및 용역
+        'upload.php',                   // 미디어
+        'users.php',                    // 사용자
+        
+    ];
+});
+
 /* =========================================
  * 관리자 메뉴 정리 (워프 흔적 제거)
  * ========================================= */
 add_action('admin_menu', function () {
 
-  remove_menu_page('edit.php');              // 글
-  remove_menu_page('edit-comments.php');     // 댓글
-  // remove_menu_page('themes.php');            // 모양
-  // remove_menu_page('plugins.php');           // 플러그인
-  // remove_menu_page('tools.php');             // 도구
-//   remove_menu_page('update-core.php');       // 업데이트
-//   remove_menu_page('options-general.php');   // 설정 (필요 시)
+    remove_menu_page('edit.php');              // 글
+    remove_menu_page('edit-comments.php');     // 댓글
+    remove_menu_page('themes.php');            // 모양
+    remove_menu_page('plugins.php');           // 플러그인
+    remove_menu_page('tools.php');             // 도구
+    remove_menu_page('update-core.php');       // 업데이트
+    remove_menu_page('options-general.php');   // 설정 (필요 시)
+    // 페이지
+    remove_menu_page('edit.php?post_type=page');
+   // WPForms
+    remove_menu_page('wpforms-overview');
+
+    // WP Mail SMTP
+    remove_menu_page('wp-mail-smtp');
+
+    // Site Assist
+    remove_menu_page('suspended-starter-plugin-setup');
+
+    // All Import
+    remove_menu_page('pmxi-admin-home');
+
+    // Kadence
+    remove_menu_page('kadence');
+    remove_menu_page('starter-plugin-starter');
+    remove_menu_page('kadence-starter');
+    remove_menu_page('kadence-blocks-home');
 
 }, 999);
+
+// ===== 상단 툴바에서 WPForms 제거 =====
+add_action('admin_bar_menu', function($wp_admin_bar) {
+    $wp_admin_bar->remove_node('wpforms-menu');
+}, 999);
+
+// ===== 상단 도움말 탭 숨기기 =====
+add_action('admin_head', function() {
+    echo '<style>
+        #contextual-help-link-wrap,
+        #contextual-help-link { display: none !important; }
+    </style>';
+});
+
+// ===== 관리자 메뉴 숨기기 =====
+add_action('admin_head', function() {
+    ?>
+    <style>
+        /* Kadence */
+        #toplevel_page_kadence-blocks { display: none !important; }
+        
+        /* Site Assist */
+        #toplevel_page_suspended-starter-plugin-setup,
+        #toplevel_page_starter-plugin,
+        li[class*="starter"] { display: none !important; }
+        
+        /* 상단 WPForms */
+        #wp-admin-bar-wpforms-menu { display: none !important; }
+        
+        /* 도움말 탭 */
+        #contextual-help-link-wrap { display: none !important; }
+    </style>
+    <?php
+});
+
+// ===== 하단 푸터 텍스트 숨기기 =====
+// "워드프레스로 만들어주셔서 감사합니다" 제거
+add_filter('admin_footer_text', '__return_empty_string');
+
+// 버전 정보 제거
+add_filter('update_footer', '__return_empty_string', 11);
 
 
 remove_action('welcome_panel', 'wp_welcome_panel');
