@@ -7,11 +7,49 @@ Template: kadence
 
 
 /* 공지사항 목록 */
+/* 공지사항 배경 화이트 */
+.notice-archive,
+body.post-type-archive-notice {
+    background-color: #fff !important;
+}
+
+/* 공지사항 상세 배경 화이트 */
+.notice-single,
+body.single-notice {
+    background-color: #fff !important;
+}
+
+
+/* 제품소개 배경 화이트 */
+.product-archive,
+body.post-type-archive-js_product,
+body.tax-product_category {
+    background-color: #fff !important;
+}
+
+/* 제품 상세보기 배경 화이트 */
+.product-single,
+body.single-js_product {
+    background-color: #fff !important;
+}
+
 .post-type-archive-notice .entry {
     border-bottom: 1px solid #e0e0e0;
     padding: 24px 0;
     background: transparent;
     box-shadow: none;
+}
+
+/* 시험 및 용역 상세 배경 화이트 */
+.service-single,
+body.single-service {
+    background-color: #fff !important;
+}
+
+.service-archive,
+body.post-type-archive-service,
+body.tax-service_cat {
+    background-color: #fff !important;
 }
 
 .post-type-archive-notice .entry-title {
@@ -866,9 +904,9 @@ Template: kadence
     color: #333;
 }
 .service-pagination .current {
-    background: #2563eb;
+    background: #333;
     color: #fff;
-    border-color: #2563eb;
+    border-color: #333;
 }
 
 /* 시험 및 용역 - 상세 */

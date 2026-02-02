@@ -841,43 +841,6 @@ add_action('wp_footer', function() {
 });
 
 
-// 최신 공지사항 숏코드
-add_shortcode('recent_notice', function($atts) {
-    $atts = shortcode_atts([
-        'count' => 4
-    ], $atts);
-    
-    $query = new WP_Query([
-        'post_type' => 'notice',
-        'posts_per_page' => $atts['count'],
-        'orderby' => 'date',
-        'order' => 'DESC'
-    ]);
-    
-    if (!$query->have_posts()) {
-        return '<p>공지사항이 없습니다.</p>';
-    }
-    
-    $output = '<div class="recent-notice-wrap">';
-    $output .= '<div class="notice-header"><h3>공지사항</h3><a href="' . get_post_type_archive_link('notice') . '">전체보기 →</a></div>';
-    $output .= '<ul class="recent-notice-list">';
-    
-    while ($query->have_posts()) {
-        $query->the_post();
-        $output .= '<li class="notice-item">';
-        $output .= '<span class="notice-date">' . get_the_date('Y.m.d') . '</span>';
-        $output .= '<a href="' . get_permalink() . '" class="notice-title">' . get_the_title() . '</a>';
-        $output .= '<a href="' . get_permalink() . '" class="notice-arrow">→</a>';
-        $output .= '</li>';
-    }
-    
-    $output .= '</ul>';
-    $output .= '</div>';
-    
-    wp_reset_postdata();
-    
-    return $output;
-});
 
 
 // 최신 제품 숏코드
