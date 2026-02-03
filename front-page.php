@@ -170,7 +170,7 @@
                     <li>현장 환경에 맞춘 기술 상담 및 제안</li>
                     <li>신뢰성 중심의 제품 선정과 지원</li>
                 </ul>
-                <a href="/about" class="btn-more">자세히 보기</a>
+                <a href="<?php echo home_url('/about'); ?>" class="btn-more">자세히 보기</a>
             </div>
         </div>
     </div>
