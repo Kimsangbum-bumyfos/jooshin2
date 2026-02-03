@@ -2082,3 +2082,6 @@ background: rgba(0, 80, 150, 0.25);
     border-color: #152d52 !important;
 }
 
+.header-navigation .menu{
+    gap: 15px !important;
+}
