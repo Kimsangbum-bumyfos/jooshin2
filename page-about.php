@@ -12,6 +12,7 @@ get_header();
 
 /* 히어로 - 전체 너비 */
 .about-header {
+    
     background: #333;
     color: #fff;
     text-align: center;
@@ -20,6 +21,7 @@ get_header();
     align-items: center;
     justify-content: center;
 }
+
 .about-header h1 {
     color: #fff;
     font-size: 36px;
@@ -67,7 +69,7 @@ get_header();
     width: 50px;
     height: 50px;
     margin: 0 auto 15px;
-    background: #e31e24;
+    background: #255E99;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -174,7 +176,7 @@ get_header();
     top: 8px;
     width: 8px;
     height: 8px;
-    background: #e31e24;
+    background: #255E99;
     border-radius: 50%;
 }
 
@@ -211,7 +213,7 @@ get_header();
 </style>
 
 <!-- 히어로 (컨테이너 밖) -->
-<div class="about-header">
+<div class="about-header" style="background: #333 url('<?php echo get_stylesheet_directory_uri(); ?>/assets/images/company.jpg') center/cover;">
     <h1>회사소개</h1>
 </div>
 

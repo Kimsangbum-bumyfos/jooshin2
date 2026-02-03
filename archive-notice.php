@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div class="notice-archive">
-    <div class="notice-header">
+    <div class="notice-header" style="background: #333 url('<?php echo get_stylesheet_directory_uri(); ?>/assets/images/contact.jpg') center/cover;">
         <h1>공지사항</h1>
     </div>
 

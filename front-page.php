@@ -1,25 +1,73 @@
 <?php get_header(); ?>
 
 <!-- 히어로 슬라이드 -->
+<!-- 히어로 슬라이드 -->
 <section class="hero-slider">
     <div class="swiper hero-swiper">
         <div class="swiper-wrapper">
+
+
+            <!-- 슬라이드 1 -->
             <div class="swiper-slide">
-                <div class="slide-bg" style="background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero1.jpg');"></div>
-                <div class="hero-content">
-                    <h1>정밀한 측정으로<br>산업의 기준을 만듭니다</h1>
-                    <p>주신 엔지니어링은 센서와 계측 기술을 통해<br>현장의 신뢰를 설계합니다.</p>
-                    <a href="/product" class="hero-btn">제품보기</a>
+                <div class="slide-inner">
+                    <div class="slide-image">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero1.png" alt="KFGS-NE">
+                    </div>
+                    <div class="slide-text">
+                        <span class="badge-new">신제품</span>
+                        <p class="slide-desc">응력 집중 부위에 초밀착하여 측정 가능<br>코너형 스트레인 게이지</p>
+                        <h2 class="slide-model">KFGS-NE</h2>
+                        <a href="/product/kfgs-ne" class="hero-btn">제품보기</a>
+                    </div>
                 </div>
             </div>
+
+            <!-- 슬라이드 2 -->
             <div class="swiper-slide">
-                <div class="slide-bg" style="background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero2.jpg');"></div>
-                <div class="hero-content">
-                    <h1>기술력으로 신뢰를<br>만들어갑니다</h1>
-                    <p>다양한 산업 환경에 최적화된<br>계측 솔루션을 제공합니다.</p>
-                    <a href="/about" class="hero-btn">회사소개</a>
+                <div class="slide-inner">
+                    <div class="slide-image">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero2.png" alt="KFGS-NE">
+                    </div>
+                    <div class="slide-text">
+                        <span class="badge-new">신제품</span>
+                        <p class="slide-desc">터치 패널을 적용한 직관적인 인터페이스<br>채널 간 합산 연산 처리 기능 탑재<br>2채널 계측용 앰프</p>
+                        <h2 class="slide-model">WGC-220 시리즈</h2>
+                        <a href="/product/kfgs-ne" class="hero-btn">제품보기</a>
+                    </div>
                 </div>
             </div>
+
+            <!-- 슬라이드 4 -->
+            <div class="swiper-slide">
+                <div class="slide-inner">
+                    <div class="slide-image">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero4.png" alt="KFGS-NE">
+                    </div>
+                    <div class="slide-text">
+                        <span class="badge-new">신제품</span>
+                        <p class="slide-desc">응력 집중 부위에 초밀착하여 측정 가능<br>코너형 스트레인 게이지</p>
+                        <h2 class="slide-model">KFGS-NE</h2>
+                        <a href="/product/kfgs-ne" class="hero-btn">제품보기</a>
+                    </div>
+                </div>
+            </div>
+
+             <!-- 슬라이드 3 -->
+           <div class="swiper-slide">
+                <div class="slide-inner">
+                    <div class="slide-image">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero3.png" alt="KFGS-NE">
+                    </div>
+                    <div class="slide-text">
+                        <span class="badge-new">신제품</span>
+                        <p class="slide-desc">보상온도 195℃<br>고온용 소형 인장/압축 로드셀</p>
+                        <h2 class="slide-model">LUXT-A</h2>
+                        <a href="/product/kfgs-ne" class="hero-btn">제품보기</a>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-prev"></div>
@@ -37,31 +85,72 @@
             </div>
             <a href="/products" class="view-all">전체보기 →</a>
         </div>
-        <div class="product-grid">
-            <?php
-            $products = new WP_Query([
-                'post_type' => 'js_product',
-                'posts_per_page' => 6,
-            ]);
-            while ($products->have_posts()) : $products->the_post();
-            ?>
-            <div class="product-card">
-                <a href="<?php the_permalink(); ?>">
-                    <div class="product-image">
-                        <?php if (has_post_thumbnail()) : ?>
-                            <?php the_post_thumbnail('medium'); ?>
-                        <?php else : ?>
-                            <div class="no-image">No Image</div>
-                        <?php endif; ?>
-                    </div>
-                    <div class="product-info">
-                        <h3><?php the_title(); ?></h3>
-                        <p><?php echo get_the_excerpt(); ?></p>
-                    </div>
-                </a>
-            </div>
-            <?php endwhile; wp_reset_postdata(); ?>
+       <div class="product-grid">
+    <?php
+    // 1) 메인노출 체크된 제품 먼저
+    $main_products = new WP_Query([
+        'post_type'      => 'js_product',
+        'posts_per_page' => 6,
+        'meta_key'       => '_js_main_display',
+        'meta_value'     => '1',
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    ]);
+
+    $displayed_ids = [];
+    $count = 0;
+
+    while ($main_products->have_posts() && $count < 6) : $main_products->the_post();
+        $displayed_ids[] = get_the_ID();
+        $count++;
+    ?>
+        <div class="product-card">
+            <a href="<?php the_permalink(); ?>">
+                <div class="product-image">
+                    <?php if (has_post_thumbnail()) : ?>
+                        <?php the_post_thumbnail('medium'); ?>
+                    <?php else : ?>
+                        <div class="no-image">No Image</div>
+                    <?php endif; ?>
+                </div>
+                <div class="product-info">
+                    <h3><?php the_title(); ?></h3>
+                    <p><?php echo esc_html(get_post_meta(get_the_ID(), '_product_usage', true)); ?></p>
+                </div>
+            </a>
         </div>
+    <?php endwhile; wp_reset_postdata();
+
+    // 2) 6개 미만이면 나머지 최신순으로 채움
+    if ($count < 6) :
+        $fill_products = new WP_Query([
+            'post_type'      => 'js_product',
+            'posts_per_page' => 6 - $count,
+            'post__not_in'   => $displayed_ids,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+        ]);
+
+        while ($fill_products->have_posts()) : $fill_products->the_post();
+    ?>
+        <div class="product-card">
+            <a href="<?php the_permalink(); ?>">
+                <div class="product-image">
+                    <?php if (has_post_thumbnail()) : ?>
+                        <?php the_post_thumbnail('medium'); ?>
+                    <?php else : ?>
+                        <div class="no-image">No Image</div>
+                    <?php endif; ?>
+                </div>
+                <div class="product-info">
+                    <h3><?php the_title(); ?></h3>
+                    <p><?php echo get_the_excerpt(); ?></p>
+                </div>
+            </a>
+        </div>
+    <?php endwhile; wp_reset_postdata();
+    endif; ?>
+</div>
     </div>
 </section>
 

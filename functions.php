@@ -1107,3 +1107,62 @@ add_action('wp_footer', function() {
 }, 99);
 
 
+
+
+// 메인노출 메타박스 추가
+function js_product_main_display_metabox() {
+    add_meta_box(
+        'js_main_display',
+        '메인 노출 설정',
+        'js_main_display_callback',
+        'js_product',
+        'side',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'js_product_main_display_metabox');
+
+function js_main_display_callback($post) {
+    wp_nonce_field('js_main_display_nonce', 'js_main_display_nonce');
+    $checked = get_post_meta($post->ID, '_js_main_display', true);
+    ?>
+    <label>
+        <input type="checkbox" name="js_main_display" value="1" <?php checked($checked, '1'); ?>>
+        메인 페이지에 노출
+    </label>
+    <?php
+}
+
+function js_save_main_display($post_id) {
+    if (!isset($_POST['js_main_display_nonce']) || 
+        !wp_verify_nonce($_POST['js_main_display_nonce'], 'js_main_display_nonce')) return;
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+
+    if (isset($_POST['js_main_display'])) {
+        update_post_meta($post_id, '_js_main_display', '1');
+    } else {
+        delete_post_meta($post_id, '_js_main_display');
+    }
+}
+add_action('save_post', 'js_save_main_display');
+
+// 관리자 목록에 메인노출 컬럼 추가 (선택사항)
+function js_product_custom_columns($columns) {
+    $new = [];
+    foreach ($columns as $key => $val) {
+        $new[$key] = $val;
+        if ($key === 'title') {
+            $new['main_display'] = '메인노출';
+        }
+    }
+    return $new;
+}
+add_filter('manage_js_product_posts_columns', 'js_product_custom_columns');
+
+function js_product_custom_column_content($column, $post_id) {
+    if ($column === 'main_display') {
+        $val = get_post_meta($post_id, '_js_main_display', true);
+        echo $val ? '✅' : '—';
+    }
+}
+add_action('manage_js_product_posts_custom_column', 'js_product_custom_column_content', 10, 2);

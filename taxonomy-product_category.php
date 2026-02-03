@@ -78,7 +78,8 @@ $search_keyword = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']
 }
 .cat-item > a:hover,
 .cat-item.active > a {
-    color: #e31e24;
+    color: #1F4F80 ;
+    font-weight:500;
 }
 .toggle-icon {
     font-size: 14px;
@@ -106,7 +107,7 @@ $search_keyword = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']
 }
 .sub-category li a:hover,
 .sub-category li.active a {
-    color: #e31e24;
+    color: #1F4F80;
 }
 .product-main {
     flex: 1;

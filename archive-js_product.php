@@ -82,7 +82,9 @@ $search_keyword = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']
 }
 .cat-item > a:hover,
 .cat-item.active > a {
-    color: #e31e24;
+    color: #1F4F80 ;
+    font-weight:500;
+
 }
 .toggle-icon {
     font-size: 14px;
@@ -112,7 +114,7 @@ $search_keyword = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']
 }
 .sub-category li a:hover,
 .sub-category li.active a {
-    color: #e31e24;
+    color: #1F4F80 ;
 }
 
 /* 메인 영역 */
@@ -300,7 +302,7 @@ $search_keyword = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']
 </style>
 
 <!-- 히어로 -->
-<div class="product-header">
+<div class="product-header" style="background: #333 url('<?php echo get_stylesheet_directory_uri(); ?>/assets/images/product.png') center/cover;">
     <h1>제품소개</h1>
 </div>
 
