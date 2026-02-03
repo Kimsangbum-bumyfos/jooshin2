@@ -17,7 +17,7 @@
                         <span class="badge-new">신제품</span>
                         <p class="slide-desc">응력 집중 부위에 초밀착하여 측정 가능<br>코너형 스트레인 게이지</p>
                         <h2 class="slide-model">KFGS-NE</h2>
-                        <a href="/product/kfgs-ne" class="hero-btn">제품보기</a>
+                        <a href="/products/kfgs-ne" class="hero-btn">제품보기</a>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                         <span class="badge-new">신제품</span>
                         <p class="slide-desc">터치 패널을 적용한 직관적인 인터페이스<br>채널 간 합산 연산 처리 기능 탑재<br>2채널 계측용 앰프</p>
                         <h2 class="slide-model">WGC-220 시리즈</h2>
-                        <a href="/product/kfgs-ne" class="hero-btn">제품보기</a>
+                        <a href="/products/kfgs-ne" class="hero-btn">제품보기</a>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                         <span class="badge-new">신제품</span>
                         <p class="slide-desc">응력 집중 부위에 초밀착하여 측정 가능<br>코너형 스트레인 게이지</p>
                         <h2 class="slide-model">KFGS-NE</h2>
-                        <a href="/product/kfgs-ne" class="hero-btn">제품보기</a>
+                        <a href="/products/kfgs-ne" class="hero-btn">제품보기</a>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                         <span class="badge-new">신제품</span>
                         <p class="slide-desc">보상온도 195℃<br>고온용 소형 인장/압축 로드셀</p>
                         <h2 class="slide-model">LUXT-A</h2>
-                        <a href="/product/kfgs-ne" class="hero-btn">제품보기</a>
+                        <a href="/products/kfgs-ne" class="hero-btn">제품보기</a>
                     </div>
                 </div>
             </div>
