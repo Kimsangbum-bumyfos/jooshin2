@@ -181,7 +181,7 @@
     <div class="contact-overlay">
         <h2>제품 및 서비스에 대해 궁금하신 점이 있으신가요?</h2>
         <p>전문 상담원이 친절하게 답변해 드립니다.</p>
-        <a href="/contact" class="btn-contact">문의하기</a>
+        <a href="<?php echo home_url('/faq'); ?>" class="btn-contact">문의하기</a>
     </div>
 </section>
 
