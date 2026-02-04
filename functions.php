@@ -120,7 +120,7 @@ add_action('admin_menu', function () {
 
     remove_menu_page('edit.php');              // 글
     remove_menu_page('edit-comments.php');     // 댓글
-    remove_menu_page('themes.php');            // 모양
+    // remove_menu_page('themes.php');            // 모양
     remove_menu_page('plugins.php');           // 플러그인
     remove_menu_page('tools.php');             // 도구
     remove_menu_page('update-core.php');       // 업데이트
