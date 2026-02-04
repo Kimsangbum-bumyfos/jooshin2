@@ -213,7 +213,7 @@ get_header();
 </style>
 
 <!-- 히어로 (컨테이너 밖) -->
-<div class="about-header" style="background: #333 url('<?php echo get_stylesheet_directory_uri(); ?>/assets/images/company.jpg') center/cover;">
+<div class="about-header" style="background: #333 url('<?php echo get_stylesheet_directory_uri(); ?>/assets/images/company.png') center/cover;">
     <h1>회사소개</h1>
 </div>
 
@@ -223,9 +223,9 @@ get_header();
         <div class="about-intro" data-aos="fade-up">
             <h2>주신산업을 소개합니다</h2>
             <p>
-                주신산업은 산업 현장을 위한 정밀 계측 솔루션을 제공하는 전문 기업입니다.<br>
-                스트레인게이지, 센서, 계측 시스템 등 다양한 제품과 서비스를 통해<br>
-                고객의 정확한 계측 요구에 부응하고 있습니다.
+                주신산업은 정밀 계측 및 센서 분야의 전문 기업입니다. <br>
+                스트레인게이지, 센서, 계측 시스템 등 다양한 고품질 제품을<br>
+                바탕으로 고객의 성공적인 비즈니스를 지원 합니다.
             </p>
         </div>
         
@@ -235,7 +235,7 @@ get_header();
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12,6 12,12 16,14"></polyline></svg>
                 </div>
                 <h3>설립연도</h3>
-                <p>2000년 설립<br>20년 이상의 경험</p>
+                <p>2008년 설립<br>20년 이상의 경험</p>
             </div>
             <div class="about-info-item" data-aos="fade-up" data-aos-delay="100">
                 <div class="icon">
@@ -248,8 +248,8 @@ get_header();
                 <div class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"></polygon></svg>
                 </div>
-                <h3>품질 인증</h3>
-                <p>ISO 9001 인증<br>품질 관리 시스템</p>
+                <h3>계측 경험</h3>
+                <p>다양한 분야에서<br>수행 이력</p>
             </div>
         </div>
 
@@ -257,23 +257,35 @@ get_header();
 
         <div class="about-feature" data-aos="fade-up" data-aos-delay="100">
             <div class="feature-image">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about.jpg" alt="주신산업">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about2.jpg" alt="주신산업">
             </div>
             <div class="feature-text">
-                <h3>정밀 계측의 파트너</h3>
+                <h3>주신산업 홈페이지를 방문해 주신 고객분들께 감사의 인사를 전합니다.</h3>
                 <p>
-                    주신산업은 1990년 설립 이래 스트레인게이지, 센서, 계측 시스템 분야에서 
-                    축적된 기술력과 노하우를 바탕으로 고객에게 최적의 솔루션을 제공하고 있습니다.
+                    주신산업은 세계적인 정밀 계측 센서 전문 기업인 KYOWA와의 협력을 통해 제품 공급 체계를 한층 강화하였습니다.
+이를 통해 글로벌 시장에서 기술력과 품질을 인정받은 KYOWA의 우수한 제품을 국내 고객 여러분께 안정적으로 제공하고 있습니다.
+
                 </p>
                 <p>
-                    국내외 유수 기업들과의 파트너십을 통해 최신 기술을 도입하고, 
-                    철저한 품질 관리 시스템으로 신뢰할 수 있는 제품을 공급합니다.
+                   KYOWA는 오랜 연구 개발과 풍부한 현장 적용 경험을 바탕으로, 다양한 연구기관과 산업 현장에서 검증된 계측 기술을 보유한 기업입니다.
+주신산업은 이러한 세계적 수준의 제품을 국내 환경에 맞는 서비스와 기술 지원과 함께 제공함으로써, 고객이 보다 높은 신뢰성과 성능을 직접 경험할 수 있도록 노력하고 있습니다.
+
                 </p>
-                <ul>
+                 <p>
+                 마지막으로 저희 주신산업에 관심을 가져 주시는 고객분들께 다시 한 번 감사드리며 계속적인 관심과 사랑 부탁드립니다.
+
+
+                </p>
+                 <p>
+                 감사합니다.
+
+
+                </p>
+                <!-- <ul>
                     <li>스트레인게이지 전문 유통</li>
                     <li>맞춤형 계측 솔루션 제공</li>
                     <li>기술 지원 및 교육 서비스</li>
-                </ul>
+                </ul> -->
             </div>
         </div>
     </div>
@@ -290,15 +302,15 @@ get_header();
             <div class="location-info">
                 <div class="info-item">
                     <strong>주소</strong>
-                    <p>경기도 성남시 중원구 사기막골로45번길 14</p>
+                    <p>경기도 성남시 중원구 사기막골로 45번길 14 우림라이온스밸리 2차 A동 803호</p>
                 </div>
                 <div class="info-item">
                     <strong>전화번호</strong>
-                    <p>031-123-4567</p>
+                    <p> 02-774-0622</p>
                 </div>
                 <div class="info-item">
                     <strong>이메일</strong>
-                    <p>info@jooshin.com</p>
+                    <p>help@joosh.co.kr</p>
                 </div>
                 <div class="info-item">
                     <strong>영업시간</strong>

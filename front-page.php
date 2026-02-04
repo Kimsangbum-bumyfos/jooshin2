@@ -15,9 +15,9 @@
                     </div>
                     <div class="slide-text">
                         <span class="badge-new">신제품</span>
-                        <p class="slide-desc">응력 집중 부위에 초밀착하여 측정 가능<br>코너형 스트레인 게이지</p>
-                        <h2 class="slide-model">KFGS-NE</h2>
-                        <a href="<?php echo home_url('/products/KFGS'); ?>" class="hero-btn">제품보기</a>
+                        <p class="slide-desc">신제품 - 2026년 2월 2일 출시<br> 데이터 분석 소프트웨어</p>
+                        <h2 class="slide-model"> SW-A-100 </h2>
+                        <a href="<?php echo home_url('/products/SW-A-100'); ?>" class="hero-btn">제품보기</a>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
         <div class="section-header">
             <div>
                 <span class="section-sub">PRODUCTS</span>
-                <h2>산업 현장을 위한 정밀 계측 솔루션</h2>
+                <h2>고성능 장비 및 계측 센서</h2>
             </div>
             <a href="/products" class="view-all">전체보기 →</a>
         </div>
@@ -164,11 +164,11 @@
             <div class="about-content">
                 <span class="section-sub">ABOUT US</span>
                 <h2>정밀 계측으로 산업 현장의<br>신뢰를 쌓아 왔습니다</h2>
-                <p>주신 엔지니어링은 오랜 현장 경험과 기술 노하우를 바탕으로 산업용 센서 및 계측 솔루션을 제공해 왔습니다.</p>
+                <p>주신산업은 신뢰할 수 있는 품질과 경쟁력 있는솔루션을 KYOWA와 함께 고객님들께 전달하고자 합니다.</p>
                 <ul class="about-list">
-                    <li>산업용 센서 및 계측 장비 공급</li>
-                    <li>현장 환경에 맞춘 기술 상담 및 제안</li>
-                    <li>신뢰성 중심의 제품 선정과 지원</li>
+                    <li>정확하고 정밀한 계측</li>
+                    <li>글로벌 수준의 품질 보증</li>
+                    <li>높은 내구성과 신뢰성</li>
                 </ul>
                 <a href="<?php echo home_url('/about'); ?>" class="btn-more">자세히 보기</a>
             </div>
