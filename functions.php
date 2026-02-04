@@ -1166,3 +1166,8 @@ function js_product_custom_column_content($column, $post_id) {
     }
 }
 add_action('manage_js_product_posts_custom_column', 'js_product_custom_column_content', 10, 2);
+
+
+// 워드프레스 업데이트 알림 숨기기
+add_filter('pre_site_transient_update_core', '__return_null');
+remove_action('admin_notices', 'update_nag', 3);
