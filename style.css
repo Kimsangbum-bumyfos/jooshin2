@@ -1010,10 +1010,15 @@ body.tax-service_cat {
 
 /* 반응형 */
 @media (max-width: 768px) {
+
     .brand.has-logo-image img.custom-logo {
         width: 210px !important;
         height: auto;
     }
+    .about-content h2 {
+        font-size:1.8rem !important;
+    }    
+
 
     .hero-swiper {
         height: auto;
