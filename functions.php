@@ -147,6 +147,24 @@ add_action('admin_menu', function () {
 
 }, 999);
 
+add_action('init', function(){
+
+    if(isset($_POST['inq_email_send'])){
+
+        $to      = 'bumyfos@naver.com'; // 🔥 여기 니 수신메일
+        $name    = isset($_POST['kb_field_0']) ? sanitize_text_field($_POST['kb_field_0']) : '';
+        $email   = isset($_POST['kb_field_1']) ? sanitize_email($_POST['kb_field_1']) : '';
+        $message = isset($_POST['kb_field_2']) ? sanitize_textarea_field($_POST['kb_field_2']) : '';
+
+        $subject = '[주신산업 - 고객문의가 접수되었습니다.] '   ;
+        $body    = "이름: {$name}\n이메일: {$email}\n\n문의내용:\n{$message}";
+        $headers = ['Content-Type: text/plain; charset=UTF-8'];
+
+        wp_mail($to,$subject,$body,$headers);
+    }
+
+});
+
 // ===== 상단 툴바에서 WPForms 제거 =====
 add_action('admin_bar_menu', function($wp_admin_bar) {
     $wp_admin_bar->remove_node('wpforms-menu');
