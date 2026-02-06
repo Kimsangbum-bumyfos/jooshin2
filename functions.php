@@ -131,7 +131,7 @@ add_action('admin_menu', function () {
     remove_menu_page('wpforms-overview');
 
     // WP Mail SMTP
-    // remove_menu_page('wp-mail-smtp');
+    remove_menu_page('wp-mail-smtp');
 
     // Site Assist
     remove_menu_page('suspended-starter-plugin-setup');
