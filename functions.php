@@ -126,7 +126,7 @@ add_action('admin_menu', function () {
     remove_menu_page('update-core.php');       // 업데이트
     remove_menu_page('options-general.php');   // 설정 (필요 시)
     // 페이지
-    remove_menu_page('edit.php?post_type=page');
+    // remove_menu_page('edit.php?post_type=page');
    // WPForms
     remove_menu_page('wpforms-overview');
 
