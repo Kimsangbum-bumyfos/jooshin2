@@ -126,7 +126,7 @@ add_action('admin_menu', function () {
     remove_menu_page('update-core.php');       // 업데이트
     remove_menu_page('options-general.php');   // 설정 (필요 시)
     // 페이지
-    // remove_menu_page('edit.php?post_type=page');
+    remove_menu_page('edit.php?post_type=page');
    // WPForms
     remove_menu_page('wpforms-overview');
 
@@ -151,7 +151,7 @@ add_action('init', function(){
 
     if(isset($_POST['inq_email_send'])){
 
-        $to      = 'bumyfos@naver.com'; // 🔥 여기 니 수신메일
+        $to      = 'help@joosh.co.kr'; // 🔥 여기 니 수신메일
         $name    = isset($_POST['kb_field_0']) ? sanitize_text_field($_POST['kb_field_0']) : '';
         $email   = isset($_POST['kb_field_1']) ? sanitize_email($_POST['kb_field_1']) : '';
         $message = isset($_POST['kb_field_2']) ? sanitize_textarea_field($_POST['kb_field_2']) : '';
