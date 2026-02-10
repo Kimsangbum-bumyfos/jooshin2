@@ -29,6 +29,11 @@ add_action('login_enqueue_scripts', function () {
 });
 
 
+// kadence_blocks_form_send_email 삭제
+add_filter('kadence_blocks_form_send_email', '__return_false', 9999);
+add_filter('kadence_blocks_form_email_body', '__return_empty_string', 9999);
+add_filter('kadence_blocks_form_email_subject', '__return_empty_string', 9999);
+
 
 /* 로그인 레이아웃 DOM 재구성 */
 add_action('login_footer', function () {
@@ -151,7 +156,8 @@ add_action('init', function () {
 
     if (isset($_POST['inq_email_send'])) {
 
-        $to = 'help@joosh.co.kr';
+        // $to = 'help@joosh.co.kr';
+        $to = 'bumy@thefrom.kr';
 
         // 선택값
         $name    = !empty($_POST['kb_field_0']) ? sanitize_text_field($_POST['kb_field_0']) : '미입력';
