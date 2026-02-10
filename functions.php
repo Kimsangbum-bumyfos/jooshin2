@@ -147,23 +147,40 @@ add_action('admin_menu', function () {
 
 }, 999);
 
-add_action('init', function(){
+add_action('init', function () {
 
-    if(isset($_POST['inq_email_send'])){
+    if (isset($_POST['inq_email_send'])) {
 
-        $to      = 'help@joosh.co.kr'; // 🔥 여기 니 수신메일
-        $name    = isset($_POST['kb_field_0']) ? sanitize_text_field($_POST['kb_field_0']) : '';
-        $email   = isset($_POST['kb_field_1']) ? sanitize_email($_POST['kb_field_1']) : '';
-        $message = isset($_POST['kb_field_2']) ? sanitize_textarea_field($_POST['kb_field_2']) : '';
+        $to = 'help@joosh.co.kr';
 
-        $subject = '[주신산업 - 고객문의가 접수되었습니다.] '   ;
-        $body    = "이름: {$name}\n이메일: {$email}\n\n문의내용:\n{$message}";
+        // 선택값
+        $name    = !empty($_POST['kb_field_0']) ? sanitize_text_field($_POST['kb_field_0']) : '미입력';
+        $company = !empty($_POST['kb_field_3']) ? sanitize_text_field($_POST['kb_field_3']) : '미입력';
+        $phone   = !empty($_POST['kb_field_4']) ? sanitize_text_field($_POST['kb_field_4']) : '미입력';
+
+        // 필수값
+        $email   = !empty($_POST['kb_field_1']) ? sanitize_email($_POST['kb_field_1']) : '';
+        $message = !empty($_POST['kb_field_2']) ? sanitize_textarea_field($_POST['kb_field_2']) : '';
+
+        // 필수값 검증
+        if (!$email || !$message) {
+            return; // 이메일/문의내용 없으면 발송 안 함
+        }
+
+        $subject = '[주신산업] 고객문의 접수';
+        $body =
+            "이름: {$name}\n" .
+            "회사명: {$company}\n" .
+            "연락처: {$phone}\n" .
+            "이메일: {$email}\n\n" .
+            "문의내용:\n{$message}";
+
         $headers = ['Content-Type: text/plain; charset=UTF-8'];
 
-        wp_mail($to,$subject,$body,$headers);
+        wp_mail($to, $subject, $body, $headers);
     }
-
 });
+
 
 // ===== 상단 툴바에서 WPForms 제거 =====
 add_action('admin_bar_menu', function($wp_admin_bar) {

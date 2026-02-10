@@ -165,7 +165,7 @@
 </section>
 
 <!-- 회사소개 -->
-<section class="section-about">
+<!-- <section class="section-about">
     <div class="container">
         <div class="about-wrap">
             <div class="about-image">
@@ -184,7 +184,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- 계측엔지니어링 (Service 슬라이드) -->
 <section class="section-service">
@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function(){
         spaceBetween: 30,
         loop: true,
         autoplay:{
-            delay:4000
+            delay:6000
         },
         pagination:{
             el: '.service-swiper .swiper-pagination',
@@ -291,6 +291,10 @@ document.addEventListener('DOMContentLoaded', function(){
             1024:{slidesPerView:3}
         }
     });
+    
+    setTimeout(function(){
+        AOS.refresh();
+    },300);
 
 });
 </script>

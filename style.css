@@ -2163,7 +2163,10 @@ background: rgba(0, 80, 150, 0.25);
     border-bottom:none !important;
 }
 .section-service .service-title{
-    font-size:23px;     /* 기존보다 작게 */
+    font-size:20px;     /* 기존보다 작게 */
     letter-spacing:0;   /* ⭐ 자간 줄이기 (지금 핵심) */
     margin-top:8px;
+}
+.swiper-slide{
+   overflow:visible !important;
 }
