@@ -162,11 +162,11 @@ add_action('init', function () {
         $email   = !empty($_POST['kb_field_1']) ? sanitize_email($_POST['kb_field_1']) : '';
         $message = !empty($_POST['kb_field_2']) ? sanitize_textarea_field($_POST['kb_field_2']) : '';
 
-        // 필수값 검증
         if (!$email || !$message) {
-            return; // 이메일/문의내용 없으면 발송 안 함
+            return;
         }
 
+        /* 1️⃣ 메일 발송 */
         $subject = '[주신산업] 고객문의 접수';
         $body =
             "이름: {$name}\n" .
@@ -176,8 +176,24 @@ add_action('init', function () {
             "문의내용:\n{$message}";
 
         $headers = ['Content-Type: text/plain; charset=UTF-8'];
-
         wp_mail($to, $subject, $body, $headers);
+
+        /* 2️⃣ 관리자(customer_inquiry) 글 생성 */
+        $post_id = wp_insert_post([
+            'post_type'   => 'customer_inquiry',
+            'post_title'  => wp_trim_words($message, 6, '…'),
+            'post_content'=> $message,
+            'post_status' => 'publish',
+        ]);
+
+        if ($post_id) {
+            update_post_meta($post_id, '_inq_name', $name);
+            update_post_meta($post_id, '_inq_company', $company);
+            update_post_meta($post_id, '_inq_phone', $phone);
+            update_post_meta($post_id, '_inq_email', $email);
+            update_post_meta($post_id, '_inq_type', '웹문의');
+            update_post_meta($post_id, '_inq_status', '접수');
+        }
     }
 });
 
