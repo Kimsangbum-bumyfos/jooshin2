@@ -1027,8 +1027,8 @@ add_shortcode('recent_products', function($atts) {
 add_action('init', function() {
     register_post_type('service', [
         'labels' => [
-            'name' => '시험 및 용역',
-            'singular_name' => '시험 및 용역',
+            'name' => '계측엔지니어링',
+            'singular_name' => '계측엔지니어링',
             'add_new' => '새로 추가',
             'add_new_item' => '새 항목 추가',
             'edit_item' => '항목 수정',
