@@ -5,6 +5,12 @@ Template: kadence
 
 /* 기존 CSS 여기에 복붙 */
 
+#masthead{
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background:#fff;
+}
 
 /* 공지사항 목록 */
 /* 공지사항 배경 화이트 */
@@ -1003,9 +1009,18 @@ body.tax-service_cat {
     object-fit: contain;
 }
 
+.footer-logo {
+    width: 170px;
+}
+
 /* 오른쪽 텍스트 */
 .slide-text {
     flex: 1;
+}
+
+.site-bottom-footer-inner-wrap {
+    padding-top: 20px;
+    padding-bottom: 20px; 
 }
 
 /* 반응형 */
@@ -2094,4 +2109,61 @@ background: rgba(0, 80, 150, 0.25);
 
 .header-navigation .menu{
     gap: 15px !important;
+}
+
+
+/* 메인계측 */
+.section-service{
+    padding:80px 0;
+}
+
+.service-card{
+    display:block;
+}
+
+.service-image img{
+    width:100%;
+    border-radius:12px;
+}
+
+.service-title{
+    margin-top:10px;
+    font-weight:600;
+    text-align:center;
+}
+
+.section-service{
+    background:#f5f6f7;
+}
+.section-service .section-header::after{
+    display:none !important;
+}
+
+.section-service .swiper-pagination{
+    margin-top:40px;
+    position:relative;
+}
+
+.section-service .swiper-pagination-bullet{
+    width:12px;
+    height:12px;
+    margin:0 6px;
+}
+
+.section-service .swiper-pagination-bullet-active{
+    background:#333;
+}
+.section-service .service-title{
+    border-bottom:none !important;
+    text-decoration:none !important;
+}
+.section-service .service-card,
+.section-service .service-card *{
+    text-decoration:none !important;
+    border-bottom:none !important;
+}
+.section-service .service-title{
+    font-size:23px;     /* 기존보다 작게 */
+    letter-spacing:0;   /* ⭐ 자간 줄이기 (지금 핵심) */
+    margin-top:8px;
 }
