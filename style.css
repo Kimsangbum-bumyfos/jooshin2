@@ -973,11 +973,16 @@ body.tax-service_cat {
 /* ===== 히어로 슬라이더 ===== */
 .hero-slider {
     width: 100%;
-    background: linear-gradient(135deg, #DBEDF9 0%, #EDF4FB 50%, #D0E4F5 100%);
+    /* background: linear-gradient(135deg, #DBEDF9 0%, #EDF4FB 50%, #D0E4F5 100%); */
 }
 
-.hero-swiper {
+/* .hero-swiper {
     width: 100%;
+    height: 600px;
+} */
+
+.hero-swiper .swiper-slide{
+    background:url('./assets/images/hero_bg.jpg') center center / cover no-repeat;
     height: 600px;
 }
 
