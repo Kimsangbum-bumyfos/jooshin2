@@ -38,6 +38,20 @@
                 </div>
             </div>
 
+            <div class="swiper-slide">
+                <div class="slide-inner">
+                    <div class="slide-image">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero5.png" alt="KFGS-NE">
+                    </div>
+                    <div class="slide-text">
+                        <!-- <span class="badge-new">신제품</span> -->
+                        <p class="slide-desc">최대 1000채널을 0.02초 간격의 반복 측정할 수 있는 고속 데이터로거<br> 채널 수 : 최대 50채널/대 (최대 1000채널)</p>
+                        <h2 class="slide-model">UCAM-550A</h2>
+                        <a href="<?php echo home_url('/products/UCAM-550A'); ?>" class="hero-btn">제품보기</a>
+                    </div>
+                </div>
+            </div>
+
             <!-- 슬라이드 4 -->
             <div class="swiper-slide">
                 <div class="slide-inner">
@@ -67,6 +81,8 @@
                     </div>
                 </div>
             </div>
+
+           
 
 
         </div>
