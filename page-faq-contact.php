@@ -24,9 +24,8 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['faq_contact_nonce']
 
         if ( empty( $errors ) ) {
             // $to      = get_option('admin_email'); // 수신 이메일 — 필요시 변경
-            // $to      = 'help@joosh.co.kr'; // 수신 이메일 — 필요시 변경
-            $to      = 'bumy@thefrom.kr'; // 수신 이메일 — 필요시 변경
-            $subject = "[문의] {$name}" . ( $company ? " ({$company})" : '' );
+            $to      = 'help@joosh.co.kr'; // 수신 이메일 — 필요시 변경            
+            $subject = "[홈페이지 문의] {$name}" . ( $company ? " ({$company})" : '' );
             $body    = "이름: {$name}\n"
                      . ( $company ? "회사명: {$company}\n" : '' )
                      . "이메일: {$email}\n"
