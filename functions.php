@@ -1233,7 +1233,7 @@ remove_action('admin_notices', 'update_nag', 3);
 
 // 공유섬네일설정
 add_action('wp_head', function() {
-    $image = get_stylesheet_directory_uri() . '/assets/images/login-logo.png';
+    $image = get_stylesheet_directory_uri() . '/assets/images/og_thumb.png';
     echo '<meta property="og:image" content="' . $image . '">';
     echo '<meta property="og:image:width" content="1200">';
     echo '<meta property="og:image:height" content="630">';
