@@ -102,81 +102,35 @@
             </div>
             <a href="/products" class="view-all">전체보기 →</a>
         </div>
-       <div class="product-grid">
-    <?php
-    // 1) 메인노출 체크된 제품 먼저
-    $main_products = new WP_Query([
-        'post_type'      => 'js_product',
-        'posts_per_page' => 6,
-        'meta_key'       => '_js_main_display',
-        'meta_value'     => '1',
-        'orderby'        => 'date',
-        'order'          => 'DESC',
-    ]);
+        <div class="product-grid">
+        <?php
+        $categories = [
+            ['slug' => 'strain-gauge',                      'name' => '스트레인게이지', 'img' => 'strain-gauge.webp'],
+            ['slug' => 'load-cell',                         'name' => '로드셀',         'img' => 'load-cell.webp'],
+            ['slug' => 'displacement-sensor',               'name' => '변위계',         'img' => 'displacement.webp'],
+            ['slug' => 'accelerometer',                     'name' => '가속도계',       'img' => 'accelerometer.webp'],
+            ['slug' => 'data-logger-measurement-equipment', 'name' => '데이터로거',     'img' => 'data-logger.webp'],
+            ['slug' => 'accessory',                         'name' => '악세서리',       'img' => 'accessory.webp'],
+        ];
 
-    $displayed_ids = [];
-    $count = 0;
-
-    while ($main_products->have_posts() && $count < 6) : $main_products->the_post();
-        $displayed_ids[] = get_the_ID();
-        $count++;
-
-        $terms = get_the_terms(get_the_ID(), 'product_category');
-        
-        $term_link = '#';
-
-        if (!empty($terms) && !is_wp_error($terms)) {
-            $term_link = get_term_link($terms[0]);
-        }
-
-    ?>
-        <div class="product-card">
-            <a href="<?php echo esc_url($term_link); ?>">
-                <div class="product-image">
-                    <?php if (has_post_thumbnail()) : ?>
-                        <?php the_post_thumbnail('medium'); ?>
-                    <?php else : ?>
-                        <div class="no-image">No Image</div>
-                    <?php endif; ?>
-                </div>
-                <div class="product-info">
-                    <h3><?php the_title(); ?></h3>
-                    <p><?php echo esc_html(get_post_meta(get_the_ID(), '_product_usage', true)); ?></p>
-                </div>
-            </a>
+        foreach ($categories as $cat) :
+            $term = get_term_by('slug', $cat['slug'], 'product_category');
+            if (!$term) continue;
+            $link    = get_term_link($term);
+            $img_url = get_stylesheet_directory_uri() . '/assets/images/' . $cat['img'];
+        ?>
+            <div class="product-card">
+                <a href="<?php echo esc_url($link); ?>">
+                    <div class="product-image">
+                        <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($cat['name']); ?>">
+                    </div>
+                    <div class="product-info">
+                        <h3><?php echo esc_html($cat['name']); ?></h3>
+                    </div>
+                </a>
+            </div>
+        <?php endforeach; ?>
         </div>
-    <?php endwhile; wp_reset_postdata();
-
-    // 2) 6개 미만이면 나머지 최신순으로 채움
-    if ($count < 6) :
-        $fill_products = new WP_Query([
-            'post_type'      => 'js_product',
-            'posts_per_page' => 6 - $count,
-            'post__not_in'   => $displayed_ids,
-            'orderby'        => 'date',
-            'order'          => 'DESC',
-        ]);
-
-        while ($fill_products->have_posts()) : $fill_products->the_post();
-    ?>
-        <div class="product-card">
-            <a href="<?php the_permalink(); ?>">
-                <div class="product-image">
-                    <?php if (has_post_thumbnail()) : ?>
-                        <?php the_post_thumbnail('medium'); ?>
-                    <?php else : ?>
-                        <div class="no-image">No Image</div>
-                    <?php endif; ?>
-                </div>
-                <div class="product-info">
-                    <h3><?php the_title(); ?></h3>
-                    <p><?php echo get_the_excerpt(); ?></p>
-                </div>
-            </a>
-        </div>
-    <?php endwhile; wp_reset_postdata();
-    endif; ?>
-</div>
     </div>
 </section>
 
