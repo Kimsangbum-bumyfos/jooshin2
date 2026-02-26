@@ -9,7 +9,16 @@ $form_error   = false;
 $form_message = '';
 
 if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['faq_contact_nonce'] ) ) {
-    if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['faq_contact_nonce'] ) ), 'faq_contact_action' ) ) {
+
+    // reCAPTCHA 검증
+    $token  = $_POST['g_recaptcha_response'] ?? '';
+    $verify = wp_remote_get("https://www.google.com/recaptcha/api/siteverify?secret=6LczTngsAAAAAEY9gSmhPIK2dKeDaCQrC5a8aQy8&response={$token}");
+    $result = json_decode(wp_remote_retrieve_body($verify));
+
+    if (!$result->success || $result->score < 0.5) {
+        $form_error   = true;
+        $form_message = '비정상적인 접근입니다.';
+    } elseif ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['faq_contact_nonce'] ) ), 'faq_contact_action' ) ) {
 
         $name    = sanitize_text_field( $_POST['contact_name']    ?? '' );
         $company = sanitize_text_field( $_POST['contact_company'] ?? '' );
@@ -18,13 +27,12 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['faq_contact_nonce']
         $message = sanitize_textarea_field( $_POST['contact_message'] ?? '' );
 
         $errors = [];
-        if ( empty( $name ) )    $errors[] = '이름을 입력해 주세요.';
+        if ( empty( $name ) )     $errors[] = '이름을 입력해 주세요.';
         if ( ! is_email($email) ) $errors[] = '올바른 이메일 주소를 입력해 주세요.';
-        if ( empty( $message ) ) $errors[] = '문의 내용을 입력해 주세요.';
+        if ( empty( $message ) )  $errors[] = '문의 내용을 입력해 주세요.';
 
         if ( empty( $errors ) ) {
-            //$to      = get_option('admin_email'); // 수신 이메일 — 필요시 변경
-            $to      = 'help@joosh.co.kr'; // 수신 이메일 — 필요시 변경            
+            $to      = 'help@joosh.co.kr';
             $subject = "[홈페이지 문의] {$name}" . ( $company ? " ({$company})" : '' );
             $body    = "이름: {$name}\n"
                      . ( $company ? "회사명: {$company}\n" : '' )
@@ -37,21 +45,21 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['faq_contact_nonce']
             ];
 
             if ( wp_mail( $to, $subject, $body, $headers ) ) {
-              $post_id = wp_insert_post([
-                  'post_type'    => 'customer_inquiry',
-                  'post_title'   => wp_trim_words($message, 6, '…'),
-                  'post_content' => $message,
-                  'post_status'  => 'publish',
-              ]);
+                $post_id = wp_insert_post([
+                    'post_type'    => 'customer_inquiry',
+                    'post_title'   => wp_trim_words($message, 6, '…'),
+                    'post_content' => $message,
+                    'post_status'  => 'publish',
+                ]);
 
-              if ($post_id) {
-                  update_post_meta($post_id, '_inq_name',    $name);
-                  update_post_meta($post_id, '_inq_company', $company);
-                  update_post_meta($post_id, '_inq_phone',   $phone);
-                  update_post_meta($post_id, '_inq_email',   $email);
-                  update_post_meta($post_id, '_inq_type',    '웹문의');
-                  update_post_meta($post_id, '_inq_status',  '접수');
-              }
+                if ($post_id) {
+                    update_post_meta($post_id, '_inq_name',    $name);
+                    update_post_meta($post_id, '_inq_company', $company);
+                    update_post_meta($post_id, '_inq_phone',   $phone);
+                    update_post_meta($post_id, '_inq_email',   $email);
+                    update_post_meta($post_id, '_inq_type',    '웹문의');
+                    update_post_meta($post_id, '_inq_status',  '접수');
+                }
 
                 $form_sent = true;
             } else {
@@ -64,6 +72,11 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['faq_contact_nonce']
         }
     }
 }
+
+// v3보안
+add_action('wp_head', function() {
+    echo '<script src="https://www.google.com/recaptcha/api.js?render=6LczTngsAAAAAOS2ecMQ97JUQ1dCc61KSc6dojL2"></script>';
+});
 
 get_header();
 ?>
@@ -437,7 +450,7 @@ get_header();
       <?php endif; ?>
 
       <?php if ( ! $form_sent ) : ?>
-      <form method="POST" action="<?php echo esc_url( get_permalink() ); ?>" novalidate>
+      <form class="fc-form" method="POST" action="<?php echo esc_url( get_permalink() ); ?>" novalidate>
         <?php wp_nonce_field( 'faq_contact_action', 'faq_contact_nonce' ); ?>
 
         <div class="fc-row">
@@ -498,6 +511,18 @@ get_header();
         </div>
 
         <button type="submit" class="fc-submit">문의 보내기 →</button>
+        <input type="hidden" name="g_recaptcha_response" id="g_recaptcha_response">
+        <script>
+        document.querySelector('.fc-submit').addEventListener('click', function(e) {
+            e.preventDefault();
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6LczTngsAAAAAOS2ecMQ97JUQ1dCc61KSc6dojL2', {action: 'contact'}).then(function(token) {
+                    document.getElementById('g_recaptcha_response').value = token;
+                    document.querySelector('.fc-form').submit();
+                });
+            });
+        });
+        </script>
       </form>
       <?php endif; ?>
     </div><!-- /.fc-card -->
