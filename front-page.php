@@ -15,7 +15,7 @@
                     </div>
                     <div class="slide-text">
                         <!-- <span class="badge-new">신제품</span> -->
-                        <p class="slide-desc">세계 최고 수준의 품질의 스트레인 게이지(품질의 제외) <br> 다양한 용도에 대응할 수 있는 폭넓은 길이와 패턴<br>탁월한 내습성 특징으로 실내 계측은 물론 현장 계측에서도 <br>우수한 성능을 발휘</p>
+                        <p class="slide-desc">세계 최고 수준의 스트레인 게이지 <br> 다양한 용도에 대응할 수 있는 폭넓은 길이와 패턴<br>탁월한 내습성 특징으로 실내 계측은 물론 현장 계측에서도 <br>우수한 성능을 발휘</p>
                         
                         <h2 class="slide-model">STRAIN GAGES </h2>
                         <a href="<?php echo home_url('/products/SW-A-100'); ?>" class="hero-btn">제품보기</a>
