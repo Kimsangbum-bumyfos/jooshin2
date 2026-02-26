@@ -676,7 +676,9 @@ function get_child_cats_callback() {
     $child_cats = get_terms([
         'taxonomy' => 'product_category',
         'hide_empty' => false,
-        'parent' => $parent_id
+        'parent' => $parent_id,
+        'orderby'    => 'term_order',
+        'order'      => 'ASC',
     ]);
     
     $output = '';
