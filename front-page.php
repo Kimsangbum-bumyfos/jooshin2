@@ -109,7 +109,7 @@
             ['slug' => 'load-cell',                         'name' => '로드셀',         'img' => 'load-cell.webp'],
             ['slug' => 'displacement-sensor',               'name' => '변위계',         'img' => 'displacement.webp'],
             ['slug' => 'accelerometer',                     'name' => '가속도계',       'img' => 'accelerometer.webp'],
-            ['slug' => 'measurement-equipment/static-measurement', 'name' => '측정기기',     'img' => 'data-logger.webp'],
+            ['slug' => 'measurement-equipment', 'name' => '측정기기',     'img' => 'data-logger.webp'],
             ['slug' => 'accessory',                         'name' => '악세서리',       'img' => 'accessory.webp'],
         ];
 
