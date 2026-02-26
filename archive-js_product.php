@@ -10,7 +10,7 @@ $parent_cats = get_terms([
     'taxonomy' => 'product_category',
     'hide_empty' => false,
     'parent' => 0,
-    'orderby' => 'term_order',
+    'orderby'    => 'term_order',  // 추가
     'order' => 'ASC'
 ]);
 
@@ -317,7 +317,10 @@ $search_keyword = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']
                     $child_cats = get_terms([
                         'taxonomy' => 'product_category',
                         'hide_empty' => false,
-                        'parent' => $parent->term_id
+                        'parent' => $parent->term_id,
+                        'orderby'    => 'term_order',  // 추가
+                        'order'      => 'ASC',
+
                     ]);
                     $has_children = !empty($child_cats);
                 ?>
