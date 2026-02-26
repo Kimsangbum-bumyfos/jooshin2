@@ -18,7 +18,7 @@
                         <p class="slide-desc">세계 최고 수준의 스트레인 게이지 <br> 다양한 용도에 대응할 수 있는 폭넓은 길이와 패턴<br>탁월한 내습성 특징으로 실내 계측은 물론 현장 계측에서도 <br>우수한 성능을 발휘</p>
                         
                         <h2 class="slide-model">STRAIN GAGES </h2>
-                        <a href="<?php echo home_url('/products/SW-A-100'); ?>" class="hero-btn">제품보기</a>
+                        <a href="<?php echo home_url('/products/kfgs'); ?>" class="hero-btn">제품보기</a>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                         <!-- <span class="badge-new">신제품</span> -->
                         <p class="slide-desc">컴팩트한 하이엔드 동적 데이터로거<br>최대 측정 속도 : 100kHz<br>채널 수 : 32채널/대 (최대 256채널)</p>
                         <h2 class="slide-model">EDX-200A</h2>
-                        <a href="<?php echo home_url('/products/KFGS-NE'); ?>" class="hero-btn">제품보기</a>
+                        <a href="<?php echo home_url('/products/EDX-200A'); ?>" class="hero-btn">제품보기</a>
                     </div>
                 </div>
             </div>
@@ -212,7 +212,7 @@
     <div class="contact-overlay">
         <h2>제품 및 서비스에 대해 궁금하신 점이 있으신가요?</h2>
         <p>전문 상담원이 친절하게 답변해 드립니다.</p>
-        <a href="<?php echo home_url('/faq'); ?>" class="btn-contact">문의하기</a>
+        <a href="<?php echo home_url('/faq-contact'); ?>" class="btn-contact">문의하기</a>
     </div>
 </section>
 
