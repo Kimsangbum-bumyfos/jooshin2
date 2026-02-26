@@ -23,7 +23,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['faq_contact_nonce']
         if ( empty( $message ) ) $errors[] = '문의 내용을 입력해 주세요.';
 
         if ( empty( $errors ) ) {
-            // $to      = get_option('admin_email'); // 수신 이메일 — 필요시 변경
+            //$to      = get_option('admin_email'); // 수신 이메일 — 필요시 변경
             $to      = 'help@joosh.co.kr'; // 수신 이메일 — 필요시 변경            
             $subject = "[홈페이지 문의] {$name}" . ( $company ? " ({$company})" : '' );
             $body    = "이름: {$name}\n"
@@ -37,6 +37,22 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['faq_contact_nonce']
             ];
 
             if ( wp_mail( $to, $subject, $body, $headers ) ) {
+              $post_id = wp_insert_post([
+                  'post_type'    => 'customer_inquiry',
+                  'post_title'   => wp_trim_words($message, 6, '…'),
+                  'post_content' => $message,
+                  'post_status'  => 'publish',
+              ]);
+
+              if ($post_id) {
+                  update_post_meta($post_id, '_inq_name',    $name);
+                  update_post_meta($post_id, '_inq_company', $company);
+                  update_post_meta($post_id, '_inq_phone',   $phone);
+                  update_post_meta($post_id, '_inq_email',   $email);
+                  update_post_meta($post_id, '_inq_type',    '웹문의');
+                  update_post_meta($post_id, '_inq_status',  '접수');
+              }
+
                 $form_sent = true;
             } else {
                 $form_error   = true;
