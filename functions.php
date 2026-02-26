@@ -1230,3 +1230,11 @@ add_action('manage_js_product_posts_custom_column', 'js_product_custom_column_co
 // 워드프레스 업데이트 알림 숨기기
 add_filter('pre_site_transient_update_core', '__return_null');
 remove_action('admin_notices', 'update_nag', 3);
+
+// 공유섬네일설정
+add_action('wp_head', function() {
+    $image = get_stylesheet_directory_uri() . '/assets/images/login-logo.png';
+    echo '<meta property="og:image" content="' . $image . '">';
+    echo '<meta property="og:image:width" content="1200">';
+    echo '<meta property="og:image:height" content="630">';
+});
