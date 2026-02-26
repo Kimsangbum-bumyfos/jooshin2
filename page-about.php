@@ -223,7 +223,13 @@ get_header();
         <div class="about-intro" data-aos="fade-up">
             <h2>회사소개</h2>
             <p>
-               <b>"세계적인 정밀 계측 센서 전문 기업 KYOWA와의 협력을 통해, 주신산업은 제품 공급 체계를 한층 강화하였습니다. <br>이를 통해 글로벌 시장에서 기술력과 품질을 인정받은 KYOWA의 우수한 제품을 국내 고객 여러분께 안정적으로 제공하고 있습니다."</b>
+               <b>
+                정밀 계측으로 산업과 사회의 안전을 지키다<br>
+                측정의 신뢰, 미래의 혁신<br>
+                세계적 기술, 국내 맞춤 솔루션<br>
+                KYOWA와 함께하는 정밀 계측의 미래<br>
+                데이터로 안전을, 기술로 가치를
+               </b>
             </p>
         </div>
         
@@ -258,14 +264,14 @@ get_header();
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about2.jpg" alt="주신산업">
             </div>
             <div class="feature-text">
-                <h3>정밀 계측은 산업의 발전과 사회의 안전을 지탱하는 핵심 기술입니다.</h3>
+                <h3>정밀 계측은 산업의 발전과 사회의 안전을 지탱하는 <br>핵심 기술입니다.</h3>
                 <p>
                     주신산업은 정밀 계측 및 센서 분야의 전문 기업으로서, 신뢰할 수 있는 기술과 품질을 바탕으로 고객의 성공적인 비즈니스를 지원해 왔습니다.
 
 
                 </p>
                 <p>
-                  세계적인 정밀 계측 센서 전문 기업 KYOWA와의 협력을 통해, 주신산업은 제품 공급 체계를 한층 강화하였습니다. 이를 통해 글로벌 시장에서 기술력과 품질을 인정받은 KYOWA의 우수한 제품을 국내 고객 여러분께 안정적으로 제공하고 있습니다.
+                  <b> 세계적인 정밀 계측 센서 전문 기업 KYOWA와의 협력을 통해, 주신산업은 제품 공급 체계를 한층 강화하였습니다. 이를 통해 글로벌 시장에서 기술력과 품질을 인정받은 KYOWA의 우수한 제품을 국내 고객 여러분께 안정적으로 제공하고 있습니다.</b>
 
                 </p>
                  <p>
@@ -301,7 +307,7 @@ get_header();
         <h2>오시는 길</h2>
         <div class="location-wrap">
             <div class="location-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d941.8618053718731!2d127.16937010327673!3d37.436328416658306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca9274bc370e7%3A0xf2938436cec11731!2z6rK96riw64-EIOyEseuCqOyLnCDspJHsm5Dqtawg7IKs6riw66eJ6rOo66GcNDXrsojquLggMTQ!5e0!3m2!1sko!2skr!4v1769412011392!5m2!1sko!2skr" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.018373875536!2d127.16675318564822!3d37.43667071020341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca9274bc370e7%3A0xd7356a920dd36000!2zKOyjvCnso7zsi6DsgrDsl4U!5e0!3m2!1sko!2skr!4v1772066984407!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="location-info">
                 <div class="info-item">
@@ -310,7 +316,7 @@ get_header();
                 </div>
                 <div class="info-item">
                     <strong>전화번호</strong>
-                    <p> 02-774-0622</p>
+                    <p>02-774-0622~5</p>
                 </div>
                 <div class="info-item">
                     <strong>이메일</strong>
