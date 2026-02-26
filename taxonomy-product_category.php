@@ -279,7 +279,9 @@ $search_keyword = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']
                     $child_cats = get_terms([
                         'taxonomy' => 'product_category',
                         'hide_empty' => false,
-                        'parent' => $parent->term_id
+                        'parent' => $parent->term_id,
+                        'orderby'    => 'term_order',
+                        'order'      => 'ASC',
                     ]);
                     $has_children = !empty($child_cats);
                     $is_active = ($current_parent_id == $parent->term_id) || ($current_cat_id == $parent->term_id);
@@ -323,7 +325,7 @@ $search_keyword = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']
                         <option value="">전체 하위카테고리</option>
                         <?php
                         if ($current_parent_id && $current_parent_id != $current_cat_id) {
-                            $child_terms = get_terms(['taxonomy' => 'product_category', 'hide_empty' => false, 'parent' => $current_parent_id]);
+                            $child_terms = get_terms(['taxonomy' => 'product_category', 'hide_empty' => false, 'parent' => $current_parent_id, 'orderby' => 'term_order', 'order' => 'ASC']);
                             foreach ($child_terms as $ct) {
                                 $sel = ($current_cat_id == $ct->term_id) ? 'selected' : '';
                                 echo "<option value='{$ct->term_id}' {$sel}>{$ct->name}</option>";
