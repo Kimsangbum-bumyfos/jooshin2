@@ -817,7 +817,7 @@ body.tax-service_cat {
 .service-header {
     text-align: center;
     padding: 80px 20px;
-    background: #333 url('./assets/images/service.png') center/cover;
+    background: #333 url('./assets/images/service.jpg') center/cover;
     color: #fff;
     height: 300px;
     display: flex;
@@ -919,7 +919,7 @@ body.tax-service_cat {
 .service-single .service-header {
     text-align: center;
     padding: 80px 20px;
-    background: #333 url('./assets/images/service.png') center/cover;
+    background: #333 url('./assets/images/service.jpg') center/cover;
     color: #fff;
     height: 300px;
     display: flex;

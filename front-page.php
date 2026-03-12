@@ -26,7 +26,7 @@
             <div class="swiper-slide">
                 <div class="slide-inner">
                     <div class="slide-image">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero5.png" alt="KFGS-NE">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/3742.png" alt="KFGS-NE">
                     </div>
                     <div class="slide-text">
                         <!-- <span class="badge-new">신제품</span> -->
