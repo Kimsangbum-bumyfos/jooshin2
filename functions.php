@@ -318,14 +318,14 @@ add_action('kadence_single_after_content', function() {
 
 
 /* =========================================
- * 재품소개 CPT
+ * 제품소개 CPT
  * ========================================= */
 function register_product_cpt() {
 
   $labels = array(
-    'name'               => '재품소개',
+    'name'               => '제품소개',
     'singular_name'      => '제품',
-    'menu_name'          => '재품소개',
+    'menu_name'          => '제품소개',
     'add_new'            => '제품 추가',
     'add_new_item'       => '새 제품 추가',
     'edit_item'          => '제품 수정',
