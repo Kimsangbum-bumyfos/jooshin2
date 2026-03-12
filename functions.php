@@ -118,10 +118,15 @@ add_filter('menu_order', function($menu_order) {
     ];
 });
 
+
+
 /* =========================================
  * 관리자 메뉴 정리 (워프 흔적 제거)
  * ========================================= */
 add_action('admin_menu', function () {
+
+    if (current_user_can('administrator')) return; // 관리자는 다 보임
+
 
     remove_menu_page('edit.php');              // 글
     remove_menu_page('edit-comments.php');     // 댓글
@@ -151,6 +156,66 @@ add_action('admin_menu', function () {
     remove_menu_page('kadence-blocks-home');
 
 }, 999);
+
+// ===== 상단 툴바에서 WPForms 제거 =====
+add_action('admin_bar_menu', function($wp_admin_bar) {
+    $wp_admin_bar->remove_node('wpforms-menu');
+}, 999);
+
+// ===== 상단 도움말 탭 숨기기 =====
+add_action('admin_head', function() {
+    echo '<style>
+        #contextual-help-link-wrap,
+        #contextual-help-link { display: none !important; }
+    </style>';
+});
+
+
+
+// ===== 관리자 메뉴 숨기기 =====
+add_action('admin_head', function() {
+    ?>
+    <style>
+        /* Kadence */
+        #toplevel_page_kadence-blocks { display: none !important; }
+        
+        /* Site Assist */
+        #toplevel_page_suspended-starter-plugin-setup,
+        #toplevel_page_starter-plugin,
+        li[class*="starter"] { display: none !important; }
+        
+        /* 상단 WPForms */
+        #wp-admin-bar-wpforms-menu { display: none !important; }
+        
+        /* 도움말 탭 */
+        #contextual-help-link-wrap { display: none !important; }
+    </style>
+    <?php
+});
+
+// ===== 하단 푸터 텍스트 숨기기 =====
+// "워드프레스로 만들어주셔서 감사합니다" 제거
+add_filter('admin_footer_text', '__return_empty_string');
+
+// 버전 정보 제거
+add_filter('update_footer', '__return_empty_string', 11);
+
+
+remove_action('welcome_panel', 'wp_welcome_panel');
+
+// 🔥 워드프레스 웰컴 패널 완전 제거
+remove_action('welcome_panel', 'wp_welcome_panel');
+
+// 혹시 남아있을 경우를 대비한 2중 제거
+add_action('admin_init', function () {
+  remove_action('welcome_panel', 'wp_welcome_panel');
+});
+
+add_action('admin_bar_menu', function ($wp_admin_bar) {
+  $wp_admin_bar->remove_node('wp-logo');
+}, 999);
+
+
 
 add_action('init', function () {
 
@@ -204,61 +269,7 @@ add_action('init', function () {
 });
 
 
-// ===== 상단 툴바에서 WPForms 제거 =====
-add_action('admin_bar_menu', function($wp_admin_bar) {
-    $wp_admin_bar->remove_node('wpforms-menu');
-}, 999);
 
-// ===== 상단 도움말 탭 숨기기 =====
-add_action('admin_head', function() {
-    echo '<style>
-        #contextual-help-link-wrap,
-        #contextual-help-link { display: none !important; }
-    </style>';
-});
-
-// ===== 관리자 메뉴 숨기기 =====
-add_action('admin_head', function() {
-    ?>
-    <style>
-        /* Kadence */
-        #toplevel_page_kadence-blocks { display: none !important; }
-        
-        /* Site Assist */
-        #toplevel_page_suspended-starter-plugin-setup,
-        #toplevel_page_starter-plugin,
-        li[class*="starter"] { display: none !important; }
-        
-        /* 상단 WPForms */
-        #wp-admin-bar-wpforms-menu { display: none !important; }
-        
-        /* 도움말 탭 */
-        #contextual-help-link-wrap { display: none !important; }
-    </style>
-    <?php
-});
-
-// ===== 하단 푸터 텍스트 숨기기 =====
-// "워드프레스로 만들어주셔서 감사합니다" 제거
-add_filter('admin_footer_text', '__return_empty_string');
-
-// 버전 정보 제거
-add_filter('update_footer', '__return_empty_string', 11);
-
-
-remove_action('welcome_panel', 'wp_welcome_panel');
-
-// 🔥 워드프레스 웰컴 패널 완전 제거
-remove_action('welcome_panel', 'wp_welcome_panel');
-
-// 혹시 남아있을 경우를 대비한 2중 제거
-add_action('admin_init', function () {
-  remove_action('welcome_panel', 'wp_welcome_panel');
-});
-
-add_action('admin_bar_menu', function ($wp_admin_bar) {
-  $wp_admin_bar->remove_node('wp-logo');
-}, 999);
 
 
 
@@ -1165,6 +1176,15 @@ add_action('wp_footer', function() {
     <?php
 }, 99);
 
+// 카테고리내 검색
+add_action('pre_get_posts', function($query) {
+    if (!is_admin() && $query->is_main_query() && is_tax('product_category')) {
+        $keyword = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']) : '';
+        if ($keyword) {
+            $query->set('s', $keyword);
+        }
+    }
+});
 
 
 
@@ -1237,4 +1257,58 @@ add_action('wp_head', function() {
     echo '<meta property="og:image" content="' . $image . '">';
     echo '<meta property="og:image:width" content="1200">';
     echo '<meta property="og:image:height" content="630">';
+});
+
+// 법인카드 연구비 플로팅
+add_action('wp_footer', function() {
+?>
+<style>
+.psys-floating {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 9999;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 110px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    border: 1px solid #e8e8e8;
+    padding: 12px 10px;
+    transition: box-shadow 0.2s, transform 0.2s;
+    gap: 6px;
+}
+.psys-floating:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    transform: translateY(-2px);
+}
+.psys-floating img {
+    width: 62px;
+    height: auto;
+}
+.psys-floating .psys-text {
+    font-size: 11px;
+    color: #333;
+    text-align: center;
+    line-height: 1.7;
+    word-break: keep-all;
+}
+.psys-floating .psys-link {
+    font-size: 11px;
+    color: #1a5fb4;
+    font-weight: 600;
+    margin-top: 2px;
+}
+</style>
+<a href="http://www.jbinst.com" target="_blank" rel="noopener" class="psys-floating">
+    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/psys_icon.jpg" alt="PSYS">
+    <div class="psys-text">법인카드<br>연구비카드</div>
+    <div class="psys-link">결제 바로가기 &gt;</div>
+</a>
+<?php
 });

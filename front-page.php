@@ -23,7 +23,36 @@
                 </div>
             </div>
 
-            <!-- 슬라이드 2 -->
+            <div class="swiper-slide">
+                <div class="slide-inner">
+                    <div class="slide-image">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero5.png" alt="KFGS-NE">
+                    </div>
+                    <div class="slide-text">
+                        <!-- <span class="badge-new">신제품</span> -->
+                        <p class="slide-desc">반복 장착을 위한 자동 게이지 길이 설정 <br>높은 정밀도로 설계되어 있으며<br>게이지 핀이 필요 없게 설계</p>
+                        <h2 class="slide-model">신율계 Model 3742</h2>
+                        <a href="<?php echo home_url('/products/UCAM-550A'); ?>" class="hero-btn">제품보기</a>
+                    </div>
+                </div>
+            </div>               
+            
+             <!-- 슬라이드 3 -->
+           <div class="swiper-slide">
+                <div class="slide-inner">
+                    <div class="slide-image">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero3.png" alt="KFGS-NE">
+                    </div>
+                    <div class="slide-text">
+                        <!-- <span class="badge-new">신제품</span> -->
+                        <p class="slide-desc">보상온도 195℃<br>고온용 소형 인장/압축 로드셀</p>
+                        <h2 class="slide-model">LUXT-A</h2>
+                        <a href="<?php echo home_url('/products/LUXT-A'); ?>" class="hero-btn">제품보기</a>
+                    </div>
+                </div>
+            </div>
+
+             <!-- 슬라이드 2 -->
             <div class="swiper-slide">
                 <div class="slide-inner">
                     <div class="slide-image">
@@ -36,21 +65,7 @@
                         <a href="<?php echo home_url('/products/wgc-220-시리즈'); ?>" class="hero-btn">제품보기</a>
                     </div>
                 </div>
-            </div>
-
-            <div class="swiper-slide">
-                <div class="slide-inner">
-                    <div class="slide-image">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero5.png" alt="KFGS-NE">
-                    </div>
-                    <div class="slide-text">
-                        <!-- <span class="badge-new">신제품</span> -->
-                        <p class="slide-desc">최대 1000채널을 0.02초 간격의 반복 측정할 수 있는 <br>고속 데이터로거<br> 채널 수 : 최대 50채널/대 (최대 1000채널)</p>
-                        <h2 class="slide-model">UCAM-550A</h2>
-                        <a href="<?php echo home_url('/products/UCAM-550A'); ?>" class="hero-btn">제품보기</a>
-                    </div>
-                </div>
-            </div>
+            </div>        
 
             <!-- 슬라이드 4 -->
             <div class="swiper-slide">
@@ -67,20 +82,6 @@
                 </div>
             </div>
 
-             <!-- 슬라이드 3 -->
-           <div class="swiper-slide">
-                <div class="slide-inner">
-                    <div class="slide-image">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero3.png" alt="KFGS-NE">
-                    </div>
-                    <div class="slide-text">
-                        <!-- <span class="badge-new">신제품</span> -->
-                        <p class="slide-desc">보상온도 195℃<br>고온용 소형 인장/압축 로드셀</p>
-                        <h2 class="slide-model">LUXT-A</h2>
-                        <a href="<?php echo home_url('/products/LUXT-A'); ?>" class="hero-btn">제품보기</a>
-                    </div>
-                </div>
-            </div>
 
            
 

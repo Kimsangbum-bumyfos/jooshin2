@@ -129,7 +129,7 @@ get_header();
 }
 
 .fc-faq__eyebrow {
-    font-size: 11px;
+    font-size: 16px;
     font-weight: 500;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -371,7 +371,7 @@ get_header();
     <div class="fc-faq">
       <div class="fc-faq__header">
         <span class="fc-faq__eyebrow">FAQ</span>
-        <h2 class="fc-faq__title">자주 묻는질문</h2>
+        <h2 class="fc-card__title">자주 묻는질문</h2>
         <p class="fc-faq__sub">
           고객님들께서 자주 문의하시는 내용을 모았습니다.<br>
           원하시는 답변이 없으시면 오른쪽 문의 양식을 이용해 주세요.
